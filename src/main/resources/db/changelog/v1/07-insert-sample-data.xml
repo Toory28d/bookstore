@@ -1,0 +1,88 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="07-insert-sample-data" author="developer">
+        <insert tableName="users">
+            <column name="email" value="admin@bookstore.com"/>
+            <column name="password" value="$2a$10$X5wFWWZ1Ww3xKZ8kqZ8kqO8KqZ8kqZ8kqZ8kqZ8kqZ8kqZ8kqZ8"/>
+            <column name="first_name" value="John"/>
+            <column name="last_name" value="Administrator"/>
+            <column name="role" value="ADMIN"/>
+        </insert>
+        <insert tableName="users">
+            <column name="email" value="manager@bookstore.com"/>
+            <column name="password" value="$2a$10$Y6wGXXZ2Xx4xLZ9lrZ9lrP9LrZ9lrZ9lrZ9lrZ9lrZ9lrZ9lrZ9"/>
+            <column name="first_name" value="Sarah"/>
+            <column name="last_name" value="Manager"/>
+            <column name="role" value="MANAGER"/>
+        </insert>
+        <insert tableName="users">
+            <column name="email" value="user@bookstore.com"/>
+            <column name="password" value="$2a$10$Z7wHYYZ3Yy5yMZ0msZ0msQ0MsZ0msZ0msZ0msZ0msZ0msZ0msZ0"/>
+            <column name="first_name" value="Michael"/>
+            <column name="last_name" value="Johnson"/>
+            <column name="role" value="USER"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Science Fiction"/>
+            <column name="description" value="Futuristic and imaginative literature"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Mystery"/>
+            <column name="description" value="Suspenseful crime and detective stories"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Fantasy"/>
+            <column name="description" value="Magical and mythical adventures"/>
+        </insert>
+        <insert tableName="authors">
+            <column name="first_name" value="Isaac"/>
+            <column name="last_name" value="Asimov"/>
+            <column name="biography" value="American writer and professor of biochemistry, best known for his science fiction works"/>
+            <column name="birth_date" value="1920-01-02"/>
+        </insert>
+        <insert tableName="authors">
+            <column name="first_name" value="Agatha"/>
+            <column name="last_name" value="Christie"/>
+            <column name="biography" value="English writer known for her detective novels"/>
+            <column name="birth_date" value="1890-09-15"/>
+        </insert>
+        <insert tableName="authors">
+            <column name="first_name" value="J.R.R."/>
+            <column name="last_name" value="Tolkien"/>
+            <column name="biography" value="English writer and philologist, creator of Middle-earth"/>
+            <column name="birth_date" value="1892-01-03"/>
+        </insert>
+        <insert tableName="books">
+            <column name="title" value="Foundation"/>
+            <column name="isbn" value="978-0553293357"/>
+            <column name="description" value="A classic science fiction saga about the fall and rise of galactic civilizations"/>
+            <column name="price" value="15.99"/>
+            <column name="stock_quantity" value="50"/>
+            <column name="publication_year" value="1951"/>
+            <column name="author_id" value="1"/>
+            <column name="category_id" value="1"/>
+        </insert>
+        <insert tableName="books">
+            <column name="title" value="Murder on the Orient Express"/>
+            <column name="isbn" value="978-0062693662"/>
+            <column name="description" value="A masterful detective story featuring Hercule Poirot"/>
+            <column name="price" value="12.99"/>
+            <column name="stock_quantity" value="35"/>
+            <column name="publication_year" value="1934"/>
+            <column name="author_id" value="2"/>
+            <column name="category_id" value="2"/>
+        </insert>
+        <insert tableName="books">
+            <column name="title" value="The Lord of the Rings"/>
+            <column name="isbn" value="978-0544003415"/>
+            <column name="description" value="Epic fantasy trilogy about the quest to destroy the One Ring"/>
+            <column name="price" value="29.99"/>
+            <column name="stock_quantity" value="75"/>
+            <column name="publication_year" value="1954"/>
+            <column name="author_id" value="3"/>
+            <column name="category_id" value="3"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

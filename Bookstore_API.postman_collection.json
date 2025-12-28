@@ -1,0 +1,400 @@
+{
+  "info": {
+    "name": "Bookstore API",
+    "description": "Complete API collection for Online Bookstore",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8089",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"newuser@bookstore.com\",\n  \"password\": \"password123\",\n  \"firstName\": \"Emily\",\n  \"lastName\": \"Smith\"\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/auth/register"}
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@bookstore.com\",\n  \"password\": \"user123\"\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/auth/login"}
+          }
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/api/auth/me"}
+          }
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{token}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentPassword\": \"user123\",\n  \"newPassword\": \"newpassword123\"\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/auth/change-password"}
+          }
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{token}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@bookstore.com\",\n  \"firstName\": \"Michael\",\n  \"lastName\": \"Updated\",\n  \"role\": \"USER\"\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/auth/profile"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users (ADMIN only)",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/api/users"}
+          }
+        },
+        {
+          "name": "Get User By ID",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/api/users/1"}
+          }
+        },
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{token}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@bookstore.com\",\n  \"password\": \"admin123\",\n  \"firstName\": \"Admin\",\n  \"lastName\": \"User\",\n  \"role\": \"ADMIN\"\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/users"}
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{token}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"updated@bookstore.com\",\n  \"firstName\": \"Updated\",\n  \"lastName\": \"Name\",\n  \"role\": \"USER\"\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/users/1"}
+          }
+        },
+        {
+          "name": "Block User",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/api/users/1/block"}
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/api/users/1"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/categories"}
+          }
+        },
+        {
+          "name": "Get Category By ID",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/categories/1"}
+          }
+        },
+        {
+          "name": "Create Category (ADMIN/MANAGER)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{token}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Biography\",\n  \"description\": \"Life stories and memoirs\"\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/categories"}
+          }
+        },
+        {
+          "name": "Update Category (ADMIN/MANAGER)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{token}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Category\",\n  \"description\": \"Updated description\"\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/categories/1"}
+          }
+        },
+        {
+          "name": "Delete Category (ADMIN/MANAGER)",
+          "request": {
+            "method": "DELETE",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/api/categories/1"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Authors",
+      "item": [
+        {
+          "name": "Get All Authors",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/authors"}
+          }
+        },
+        {
+          "name": "Get Author By ID",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/authors/1"}
+          }
+        },
+        {
+          "name": "Create Author (ADMIN/MANAGER)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{token}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"George\",\n  \"lastName\": \"Orwell\",\n  \"biography\": \"English novelist and journalist\",\n  \"birthDate\": \"1903-06-25\"\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/authors"}
+          }
+        },
+        {
+          "name": "Update Author (ADMIN/MANAGER)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{token}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"George\",\n  \"lastName\": \"Orwell\",\n  \"biography\": \"Updated biography\",\n  \"birthDate\": \"1903-06-25\"\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/authors/1"}
+          }
+        },
+        {
+          "name": "Delete Author (ADMIN/MANAGER)",
+          "request": {
+            "method": "DELETE",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/api/authors/1"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Books",
+      "item": [
+        {
+          "name": "Get All Books",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/books"}
+          }
+        },
+        {
+          "name": "Get Book By ID",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/books/1"}
+          }
+        },
+        {
+          "name": "Get Books By Category",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/books/category/1"}
+          }
+        },
+        {
+          "name": "Get Books By Author",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/books/author/1"}
+          }
+        },
+        {
+          "name": "Create Book (ADMIN/MANAGER)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{token}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"1984\",\n  \"isbn\": \"9780451524935\",\n  \"description\": \"Dystopian social science fiction novel\",\n  \"price\": 14.99,\n  \"stockQuantity\": 100,\n  \"publicationYear\": 1949,\n  \"authorId\": 1,\n  \"categoryId\": 1\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/books"}
+          }
+        },
+        {
+          "name": "Update Book (ADMIN/MANAGER)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{token}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"1984 - Updated\",\n  \"isbn\": \"9780451524935\",\n  \"description\": \"Updated description\",\n  \"price\": 16.99,\n  \"stockQuantity\": 150,\n  \"publicationYear\": 1949,\n  \"authorId\": 1,\n  \"categoryId\": 1\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/books/1"}
+          }
+        },
+        {
+          "name": "Delete Book (ADMIN/MANAGER)",
+          "request": {
+            "method": "DELETE",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/api/books/1"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Get All Orders (ADMIN/MANAGER)",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/api/orders"}
+          }
+        },
+        {
+          "name": "Get My Orders",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/api/orders/my-orders"}
+          }
+        },
+        {
+          "name": "Get Order By ID",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/api/orders/1"}
+          }
+        },
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{token}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shippingAddress\": \"123 Main St, Almaty, Kazakhstan\",\n  \"items\": [\n    {\n      \"bookId\": 1,\n      \"quantity\": 2\n    },\n    {\n      \"bookId\": 2,\n      \"quantity\": 1\n    }\n  ]\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/orders"}
+          }
+        },
+        {
+          "name": "Update Order Status (ADMIN/MANAGER)",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/api/orders/1/status?status=SHIPPED"}
+          }
+        },
+        {
+          "name": "Cancel Order",
+          "request": {
+            "method": "DELETE",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/api/orders/1/cancel"}
+          }
+        }
+      ]
+    }
+  ]
+}
