@@ -5,21 +5,21 @@
     <changeSet id="07-insert-sample-data" author="developer">
         <insert tableName="users">
             <column name="email" value="admin@bookstore.com"/>
-            <column name="password" value="$2a$10$X5wFWWZ1Ww3xKZ8kqZ8kqO8KqZ8kqZ8kqZ8kqZ8kqZ8kqZ8kqZ8"/>
+            <column name="password" value="$2a$10$ZEL8TQl6.tFsY7GwcJwrOOremyVS53T5SNyP/spm0jDe37RjbcVGS"/>
             <column name="first_name" value="John"/>
             <column name="last_name" value="Administrator"/>
             <column name="role" value="ADMIN"/>
         </insert>
         <insert tableName="users">
             <column name="email" value="manager@bookstore.com"/>
-            <column name="password" value="$2a$10$Y6wGXXZ2Xx4xLZ9lrZ9lrP9LrZ9lrZ9lrZ9lrZ9lrZ9lrZ9lrZ9"/>
+            <column name="password" value="$2a$10$Ubrj1D4ofQn5ta6eiZWkGe4Wd1Rm8UfGzLpZTVlQ4ptAErqepg48W"/>
             <column name="first_name" value="Sarah"/>
             <column name="last_name" value="Manager"/>
             <column name="role" value="MANAGER"/>
         </insert>
         <insert tableName="users">
             <column name="email" value="user@bookstore.com"/>
-            <column name="password" value="$2a$10$Z7wHYYZ3Yy5yMZ0msZ0msQ0MsZ0msZ0msZ0msZ0msZ0msZ0msZ0"/>
+            <column name="password" value="$2a$10$NiekthVFLHQfB/6MLqQqiuKAOHSIosCdcdD09uEKjHaglKoyGn/RO"/>
             <column name="first_name" value="Michael"/>
             <column name="last_name" value="Johnson"/>
             <column name="role" value="USER"/>
